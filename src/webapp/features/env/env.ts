@@ -29,4 +29,3 @@ export const region: string | undefined = regions[window.location.hostname];
 export const isManagedCloud = !!region;
 export const isOAuthEnabled = isManagedCloud || isDevelopment;
 export const isBillingEnabled = isManagedCloud || isDevelopment;
-export const isSupportEnabled = isManagedCloud || isDevelopment;

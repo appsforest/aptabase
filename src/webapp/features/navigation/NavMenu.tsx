@@ -1,6 +1,4 @@
 import { useCurrentApp } from "@features/apps";
-import { isSupportEnabled } from "@features/env";
-import { SupportNavCategory } from "@features/support";
 import {
   IconActivityHeartbeat,
   IconCloudDownload,
@@ -69,7 +67,6 @@ export function NavMenu(props: { onNavigation?: VoidFunction }) {
             onNavigation={props.onNavigation}
           />
         </NavCategory>
-        {isSupportEnabled && <SupportNavCategory />}
       </div>
     </div>
   );

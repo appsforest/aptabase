@@ -1,10 +1,8 @@
-import { Link } from "react-router-dom";
-import { isSupportEnabled } from "@features/env";
-import { ContactUsLink } from "@features/support";
 import { PingSignal } from "@components/PingSignal";
 import { useCurrentApp } from "@features/apps";
-import { IconCopy, IconCheck } from "@tabler/icons-react";
+import { IconCheck, IconCopy } from "@tabler/icons-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 type Props = {
   appId: string;
@@ -49,14 +47,6 @@ export function WaitingForEventsContent(props: Props) {
         on your app to get started.
       </p>
       <PingSignal color="success" />
-      {isSupportEnabled && (
-        <div className="w-full space-y-4">
-          <hr className="mx-4" />
-          <p className="text-xs text-center text-muted-foreground">
-            Need help? <ContactUsLink className="text-white underline">Contact us</ContactUsLink>
-          </p>
-        </div>
-      )}
     </>
   );
 }

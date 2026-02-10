@@ -1,7 +1,7 @@
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-import mkcert from "vite-plugin-mkcert";
 import { defineConfig } from "vite";
+import mkcert from "vite-plugin-mkcert";
 const pkg = require("./package.json");
 
 // https://vitejs.dev/config/
@@ -27,7 +27,7 @@ export default defineConfig({
     port: 3000,
     https: true,
     headers: {
-      "Content-Security-Policy": `default-src 'self' 'unsafe-inline'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://client.crisp.chat; script-src 'self' 'unsafe-inline' https://client.crisp.chat; font-src 'self' https://client.crisp.chat; connect-src https://raw.githubusercontent.com wss://client.relay.crisp.chat https://client.crisp.chat wss://localhost:3000 https://localhost:3000`,
+      "Content-Security-Policy": `default-src 'self' 'unsafe-inline'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; connect-src https://raw.githubusercontent.com wss://localhost:3000 https://localhost:3000`,
     },
     proxy: {
       "/uploads": {

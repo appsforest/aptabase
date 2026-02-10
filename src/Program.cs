@@ -55,7 +55,7 @@ public partial class Program
                     .AllowCredentials()
                     .SetPreflightMaxAge(TimeSpan.FromHours(1));
             });
-            
+
             options.AddPolicy(name: "AllowAny", policy =>
             {
                 policy.AllowAnyOrigin()
@@ -195,7 +195,7 @@ public partial class Program
         }
 
         var app = builder.Build();
-        
+
         app.UseResponseCompression();
 
         app.UseForwardedHeaders(new ForwardedHeadersOptions
@@ -229,7 +229,7 @@ public partial class Program
             {
                 OnPrepareResponse = ctx =>
                 {
-                    ctx.Context.Response.Headers.Append("Content-Security-Policy", "default-src 'self' 'unsafe-inline'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://client.crisp.chat; script-src 'self' 'unsafe-inline' https://client.crisp.chat; font-src 'self' https://client.crisp.chat; connect-src 'self' https://raw.githubusercontent.com wss://client.relay.crisp.chat https://client.crisp.chat;");
+                    ctx.Context.Response.Headers.Append("Content-Security-Policy", "default-src 'self' 'unsafe-inline'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self' https://raw.githubusercontent.com;");
                     ctx.Context.Response.Headers.Append("X-Frame-Options", "DENY");
                     ctx.Context.Response.Headers.Append("X-Content-Type-Options", "nosniff");
                     ctx.Context.Response.Headers.Append("X-XSS-Protection", "1; mode=block");
@@ -255,7 +255,7 @@ public partial class Program
     public static void RunMigrations(IServiceProvider sp)
     {
         using var scope = sp.CreateScope();
-        
+
         // Execute Postgres migrations
         var runner = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
         runner.MigrateUp();
