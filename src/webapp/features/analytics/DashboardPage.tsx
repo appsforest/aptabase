@@ -26,7 +26,6 @@ import { OnboardingDashboard } from "./dashboard/OnboardingDashboard";
 import { TeaserDashboardContainer } from "./dashboard/TeaserDashboardContainer";
 import { VersionWidget } from "./dashboard/VersionWidget";
 import { WidgetContainer } from "./dashboard/WidgetContainer";
-import { EventsChartWidget } from "./dashboard/custom-widgets/EventsChartWidget";
 import { DateFilterContainer } from "./date-filters/DateFilterContainer";
 import { MainChartWidget } from "./key_metrics/MainChartWidget";
 import { AppLockedContent } from "./locked/AppLockedContent";
@@ -99,19 +98,19 @@ export function Component() {
     const widget = widgetsConfig.find((w: SingleWidgetConfig) => w.id === widgetId)!;
 
     switch (widget.type) {
-      case "custom-events-chart":
-        return (
-          <WidgetContainer
-            key={widgetId}
-            widgetConfig={widget}
-            widgetName={widget?.title ?? "Custom Chart"}
-            className="col-span-2"
-            onToggleMinimize={() => toggleMinimize(widgetId)}
-            onRemove={() => removeWidget(widgetId)}
-          >
-            <EventsChartWidget {...props} widgetConfig={widget} />
-          </WidgetContainer>
-        );
+      // case "custom-events-chart":
+      //   return (
+      //     <WidgetContainer
+      //       key={widgetId}
+      //       widgetConfig={widget}
+      //       widgetName={widget?.title ?? "Custom Chart"}
+      //       className="col-span-2"
+      //       onToggleMinimize={() => toggleMinimize(widgetId)}
+      //       onRemove={() => removeWidget(widgetId)}
+      //     >
+      //       <EventsChartWidget {...props} widgetConfig={widget} />
+      //     </WidgetContainer>
+      //   );
       case "events-chart":
         return (
           <WidgetContainer
