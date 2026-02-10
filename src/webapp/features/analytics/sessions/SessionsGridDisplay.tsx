@@ -59,7 +59,7 @@ export function SessionsGridDisplay(props: Props) {
               </div>
             </div>
           )}
-          <table className="min-w-full divide-y divide-gray-300">
+          <table className="min-w-full divide-y divide-dark-900">
             <thead>
               <tr>
                 <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold sm:pl-6 lg:pl-8">

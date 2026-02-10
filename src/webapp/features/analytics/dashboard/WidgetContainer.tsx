@@ -36,34 +36,36 @@ export const WidgetContainer = ({
     <div
       ref={setNodeRef}
       style={style}
-      className={`relative rounded-lg border border-border ${className} ${widgetConfig.isMinimized ? "py-2" : ""}`}
+      className={`relative rounded-lg bg-card border-border ${className} ${widgetConfig.isMinimized ? "py-2" : ""}`}
     >
       {widgetConfig.isMinimized && (
         <span className="absolute -top-3 left-3 bg-background font-medium px-1">{widgetName}</span>
       )}
 
-      <div className="absolute -top-3 right-3 bg-background px-1 flex gap-1">
+      <div className="absolute -top-2 right-3 px-1 flex gap-1">
         <Button
           variant="ghost"
           size="xs"
-          className="h-6 w-6 rounded-full hover:bg-accent cursor-grab"
+          className="h-6 w-6 rounded-full bg-background border hover:bg-accent cursor-grab"
           {...attributes}
           {...listeners}
         >
           <IconGripVertical className="w-4 h-4" />
         </Button>
+
         {widgetConfig.isDefined && (
-          <Button variant="ghost" size="xs" className="h-6 w-6 rounded-full hover:bg-accent" onClick={onToggleMinimize}>
+          <Button variant="ghost" size="xs" className="h-6 w-6 rounded-full bg-background border hover:bg-accent" onClick={onToggleMinimize}>
             {widgetConfig.isMinimized ? <IconPlus className="w-4 h-4" /> : <IconMinus className="w-4 h-4" />}
           </Button>
         )}
+
         {widgetConfig.supportsRemove && widgetConfig.isDefined && (
-          <Button variant="ghost" size="xs" className="h-6 w-6 rounded-full hover:bg-accent" onClick={onRemove}>
+          <Button variant="ghost" size="xs" className="h-6 w-6 rounded-full bg-background border hover:bg-accent" onClick={onRemove}>
             <IconX className="w-4 h-4" />
           </Button>
         )}
       </div>
-      <div className={`p-4 ${widgetConfig.isMinimized && widgetConfig.isDefined ? "hidden" : ""}`}>{children}</div>
+      <div className={`pt-8 pb-6 px-6 ${widgetConfig.isMinimized && widgetConfig.isDefined ? "hidden" : ""}`}>{children}</div>
     </div>
   );
 };

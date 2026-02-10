@@ -20,53 +20,55 @@ export function NavMenu(props: { onNavigation?: VoidFunction }) {
         <NavCategory>
           <NavItem label="Home" href="/" icon={IconLayoutGrid} onNavigation={props.onNavigation} />
         </NavCategory>
-        <NavCategory title="Application">
-          <NavItem
-            label="Dashboard"
-            disabled={!currentApp}
-            href={`/${currentApp?.id}/`}
-            icon={IconGraph}
-            onNavigation={props.onNavigation}
-          />
-          <NavItem
-            label="Live View"
-            disabled={!currentApp || !!currentApp.lockReason}
-            href={`/${currentApp?.id}/live`}
-            icon={IconActivityHeartbeat}
-            onNavigation={props.onNavigation}
-          />
-          <NavItem
-            label="User Sessions"
-            disabled={!currentApp || !!currentApp.lockReason}
-            href={`/${currentApp?.id}/sessions`}
-            icon={IconUsers}
-            onNavigation={props.onNavigation}
-          />
-          <NavItem
-            label="Export"
-            disabled={!currentApp || !!currentApp.lockReason}
-            href={`/${currentApp?.id}/export`}
-            icon={IconCloudDownload}
-            onNavigation={props.onNavigation}
-          />
-          <NavItem
-            label="Instructions"
-            disabled={!currentApp}
-            href={`/${currentApp?.id}/instructions`}
-            icon={IconCode}
-            onNavigation={props.onNavigation}
-          />
-          <NavItem
-            label="Settings"
-            disabled={!currentApp || !currentApp.hasOwnership}
-            disabledReason={
-              currentApp && !currentApp.hasOwnership ? "Settings are available only to application owners" : undefined
-            }
-            href={`/${currentApp?.id}/settings`}
-            icon={IconSettings}
-            onNavigation={props.onNavigation}
-          />
-        </NavCategory>
+        {currentApp && (
+          <NavCategory title="Application">
+            <NavItem
+              label="Dashboard"
+              disabled={!currentApp}
+              href={`/${currentApp?.id}/`}
+              icon={IconGraph}
+              onNavigation={props.onNavigation}
+            />
+            <NavItem
+              label="Live View"
+              disabled={!currentApp || !!currentApp.lockReason}
+              href={`/${currentApp?.id}/live`}
+              icon={IconActivityHeartbeat}
+              onNavigation={props.onNavigation}
+            />
+            <NavItem
+              label="User Sessions"
+              disabled={!currentApp || !!currentApp.lockReason}
+              href={`/${currentApp?.id}/sessions`}
+              icon={IconUsers}
+              onNavigation={props.onNavigation}
+            />
+            <NavItem
+              label="Export"
+              disabled={!currentApp || !!currentApp.lockReason}
+              href={`/${currentApp?.id}/export`}
+              icon={IconCloudDownload}
+              onNavigation={props.onNavigation}
+            />
+            <NavItem
+              label="Instructions"
+              disabled={!currentApp}
+              href={`/${currentApp?.id}/instructions`}
+              icon={IconCode}
+              onNavigation={props.onNavigation}
+            />
+            <NavItem
+              label="Settings"
+              disabled={!currentApp || !currentApp.hasOwnership}
+              disabledReason={
+                currentApp && !currentApp.hasOwnership ? "Settings are available only to application owners" : undefined
+              }
+              href={`/${currentApp?.id}/settings`}
+              icon={IconSettings}
+              onNavigation={props.onNavigation}
+            />
+          </NavCategory>
+        )}
       </div>
     </div>
   );
