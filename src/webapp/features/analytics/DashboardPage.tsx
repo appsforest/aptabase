@@ -152,16 +152,14 @@ export function Component() {
         );
       case "events":
         return (
-          <LazyLoad key={widgetId}>
-            <WidgetContainer
-              widgetConfig={widget}
-              widgetName={widget?.title ?? "Events"}
-              onToggleMinimize={() => toggleMinimize(widgetId)}
-              className="h-full"
-            >
-              <EventWidget {...props} />
-            </WidgetContainer>
-          </LazyLoad>
+          <WidgetContainer
+            widgetConfig={widget}
+            widgetName={widget?.title ?? "Events"}
+            onToggleMinimize={() => toggleMinimize(widgetId)}
+            className="col-span-2"
+          >
+            <EventWidget {...props} />
+          </WidgetContainer>
         );
       case "app-versions":
         return (

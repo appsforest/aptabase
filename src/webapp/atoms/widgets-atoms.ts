@@ -34,7 +34,7 @@ export const DEFAULT_WIDGETS_CONFIG: SingleWidgetConfig[] = [
     title: "Custom Chart",
     type: "custom-events-chart",
     isMinimized: false,
-    orderIndex: 0,
+    orderIndex: 10,
     isDefined: false,
     properties: {
       selectedEventNames: [],
@@ -54,7 +54,7 @@ export const DEFAULT_WIDGETS_CONFIG: SingleWidgetConfig[] = [
     title: "Countries",
     type: "countries",
     isMinimized: false,
-    orderIndex: 2,
+    orderIndex: 3,
     isDefined: true,
   },
   {
@@ -62,7 +62,7 @@ export const DEFAULT_WIDGETS_CONFIG: SingleWidgetConfig[] = [
     title: "Operating Systems",
     type: "operating-systems",
     isMinimized: false,
-    orderIndex: 3,
+    orderIndex: 4,
     isDefined: true,
   },
   {
@@ -70,7 +70,7 @@ export const DEFAULT_WIDGETS_CONFIG: SingleWidgetConfig[] = [
     title: "Events",
     type: "events",
     isMinimized: false,
-    orderIndex: 4,
+    orderIndex: 2,
     isDefined: true,
   },
   {
@@ -112,28 +112,28 @@ export const getDashboardWidgetsForAppAtom = atom((get) => {
 
 export type UpdateDashboardWidgetsAction<T = any> =
   | {
-      widgetId: string;
-      appId: string;
-      type: "update-properties";
-      properties?: T;
-    }
+    widgetId: string;
+    appId: string;
+    type: "update-properties";
+    properties?: T;
+  }
   | {
-      widgetId: string;
-      appId: string;
-      type: "update-order";
-      active: { widgetId: string; newIndex: number };
-      over: { widgetId: string; newIndex: number };
-    }
+    widgetId: string;
+    appId: string;
+    type: "update-order";
+    active: { widgetId: string; newIndex: number };
+    over: { widgetId: string; newIndex: number };
+  }
   | {
-      widgetId: string;
-      appId: string;
-      type: "toggle-minimized";
-    }
+    widgetId: string;
+    appId: string;
+    type: "toggle-minimized";
+  }
   | {
-      widgetId: string;
-      appId: string;
-      type: "toggle-is-defined";
-    };
+    widgetId: string;
+    appId: string;
+    type: "toggle-is-defined";
+  };
 
 export const dashboardWidgetsAtom = atom<null, [UpdateDashboardWidgetsAction], void>(
   (get) => null,
