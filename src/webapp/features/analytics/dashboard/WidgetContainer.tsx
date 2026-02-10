@@ -1,7 +1,7 @@
 import { Button } from "@components/Button";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { IconGripVertical, IconMinus, IconPlus, IconX } from "@tabler/icons-react";
+import { IconGripVertical, IconX } from "@tabler/icons-react";
 import { ReactNode } from "react";
 import { SingleWidgetConfig } from "../../../atoms/widgets-atoms";
 
@@ -53,11 +53,11 @@ export const WidgetContainer = ({
           <IconGripVertical className="w-4 h-4" />
         </Button>
 
-        {widgetConfig.isDefined && (
+        {/* widgetConfig.isDefined && (
           <Button variant="ghost" size="xs" className="h-6 w-6 rounded-full bg-background border hover:bg-accent" onClick={onToggleMinimize}>
             {widgetConfig.isMinimized ? <IconPlus className="w-4 h-4" /> : <IconMinus className="w-4 h-4" />}
           </Button>
-        )}
+        ) */}
 
         {widgetConfig.supportsRemove && widgetConfig.isDefined && (
           <Button variant="ghost" size="xs" className="h-6 w-6 rounded-full bg-background border hover:bg-accent" onClick={onRemove}>
