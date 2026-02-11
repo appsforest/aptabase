@@ -14,7 +14,7 @@ type Props = {
 export function EventStep(props: Props) {
   return (
     <div className="relative">
-      <span className="absolute left-4 top-6 -ml-px h-full w-0.5 bg-border" />
+      <span className="absolute left-4 top-8 -ml-px h-full w-0.5 bg-border" />
 
       <div className="relative flex items-center space-x-2">
         <IconClick className="p-1.5 h-8 w-8 bg-muted border rounded-full" />

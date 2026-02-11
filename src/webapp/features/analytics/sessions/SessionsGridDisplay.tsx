@@ -62,38 +62,38 @@ export function SessionsGridDisplay(props: Props) {
           <table className="min-w-full divide-y divide-dark-900">
             <thead>
               <tr>
-                <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold sm:pl-6 lg:pl-8">
+                <th scope="col" className="py-3.5 pl-4 pr-3 text-sm font-semibold sm:pl-6 lg:pl-8">
                   <div className="flex items-center gap-2">
                     <IconUser className="text-muted-foreground h-5 w-5" />
                     Timestamp
                   </div>
                 </th>
-                <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold">
-                  <div className="flex items-center gap-2">
+                <th scope="col" className="px-3 py-3.5 text-sm font-semibold">
+                  <div className="flex justify-end gap-2">
                     <IconClock className="text-muted-foreground h-5 w-5" />
                     Duration
                   </div>
                 </th>
-                <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold">
-                  <div className="flex items-center gap-2">
+                <th scope="col" className="px-3 py-3.5 text-sm font-semibold">
+                  <div className="flex justify-end gap-2">
                     <IconClick className="text-muted-foreground h-5 w-5" />
                     Events
                   </div>
                 </th>
-                <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold">
-                  <div className="flex items-center gap-2">
+                <th scope="col" className="px-3 py-3.5 text-sm font-semibold">
+                  <div className="flex justify-end gap-2">
                     <IconMap className="text-muted-foreground h-5 w-5" />
                     Country
                   </div>
                 </th>
-                <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6 lg:pr-8">
-                  <div className="flex items-center gap-2">
+                <th scope="col" className="relative py-3.5 pl-3 pr-4">
+                  <div className="flex justify-end gap-2">
                     <IconDeviceDesktop className="text-muted-foreground h-5 w-5" />
                     OS
                   </div>
                 </th>
-                <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold">
-                  <div className="flex items-center gap-2">
+                <th scope="col" className="py-3.5 pl-3 pr-4 text-left text-sm font-semibold sm:pr-6 lg:pr-8">
+                  <div className="flex justify-end gap-2">
                     <IconDevices className="text-muted-foreground h-5 w-5" />
                     App Version
                   </div>
@@ -110,10 +110,10 @@ export function SessionsGridDisplay(props: Props) {
                     <div className="flex justify-end">{formatNumber(session.duration, "duration")}</div>
                   </td>
                   <td className="whitespace-nowrap px-3 py-4 text-sm">
-                    <div className="flex justify-center">{session.eventsCount}</div>
+                    <div className="flex justify-end">{session.eventsCount}</div>
                   </td>
                   <td className="whitespace-nowrap px-3 py-4 text-sm">
-                    <div className="flex items-center gap-2">
+                    <div className="flex justify-end gap-2">
                       <CountryFlag countryCode={session.countryCode} />
                       <div>
                         {session.regionName && <span>{session.regionName} · </span>}
@@ -122,14 +122,18 @@ export function SessionsGridDisplay(props: Props) {
                     </div>
                   </td>
                   <td className="whitespace-nowrap px-3 py-4 text-sm">
-                    <div className="flex items-center gap-2">
+                    <div className="flex justify-end gap-2">
                       <span>
                         {session.osName} {session.osVersion}
                       </span>
                       <OSIcon name={session.osName} className="h-5 w-5" />
                     </div>
                   </td>
-                  <td className="whitespace-nowrap px-3 py-4 text-sm">{session.appVersion}</td>
+                  <td className="whitespace-nowrap py-4 pr-4 pl-3 text-sm sm:pr-6 lg:pr-8">
+                    <div className="flex justify-end">
+                      {session.appVersion}
+                    </div>
+                  </td>
                 </tr>
               ))}
             </tbody>
