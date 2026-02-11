@@ -27,6 +27,7 @@ import { OnboardingDashboard } from "./dashboard/OnboardingDashboard";
 import { TeaserDashboardContainer } from "./dashboard/TeaserDashboardContainer";
 import { VersionWidget } from "./dashboard/VersionWidget";
 import { WidgetContainer } from "./dashboard/WidgetContainer";
+import { WorldMapWidget } from "./dashboard/WorldMapWidget";
 import { DateFilterContainer } from "./date-filters/DateFilterContainer";
 import { MainChartWidget } from "./key_metrics/MainChartWidget";
 import { AppLockedContent } from "./locked/AppLockedContent";
@@ -105,7 +106,7 @@ export function Component() {
       //       key={widgetId}
       //       widgetConfig={widget}
       //       widgetName={widget?.title ?? "Custom Chart"}
-      //       className="col-span-2"
+      //       className="col-span-3"
       //       onToggleMinimize={() => toggleMinimize(widgetId)}
       //       onRemove={() => removeWidget(widgetId)}
       //     >
@@ -114,7 +115,7 @@ export function Component() {
       //   );
       case "events-chart":
         return (
-          <LazyLoad key={widgetId} className="col-span-2">
+          <LazyLoad key={widgetId} className="col-span-3">
             <WidgetContainer
               key={widgetId}
               widgetConfig={widget}
@@ -138,6 +139,19 @@ export function Component() {
             </WidgetContainer>
           </LazyLoad>
         );
+      case "world-map":
+        return (
+          <LazyLoad key={widgetId} className="col-span-2">
+            <WidgetContainer
+              widgetConfig={widget}
+              widgetName={widget?.title ?? "World Map"}
+              onToggleMinimize={() => toggleMinimize(widgetId)}
+              className="h-full"
+            >
+              <WorldMapWidget {...props} />
+            </WidgetContainer>
+          </LazyLoad>
+        );
       case "operating-systems":
         return (
           <LazyLoad key={widgetId}>
@@ -153,7 +167,7 @@ export function Component() {
         );
       case "events":
         return (
-          <LazyLoad key={widgetId} className="col-span-2">
+          <LazyLoad key={widgetId} className="col-span-3">
             <WidgetContainer
               widgetConfig={widget}
               widgetName={widget?.title ?? "Events"}
@@ -228,7 +242,7 @@ export function Component() {
         </div>
         <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
           <SortableContext items={widgetsOrder} strategy={rectSortingStrategy}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {widgetsOrder.map((widgetId: string) => renderWidget(widgetId))}
             </div>
           </SortableContext>

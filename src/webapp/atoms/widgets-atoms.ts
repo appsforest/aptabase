@@ -12,7 +12,8 @@ type WidgetType =
   | "operating-systems"
   | "events"
   | "app-versions"
-  | "device-models";
+  | "device-models"
+  | "world-map";
 
 const userDefinedWidgetTypes: WidgetType[] = ["custom-events-chart"];
 
@@ -57,11 +58,19 @@ export const DEFAULT_WIDGETS_CONFIG: SingleWidgetConfig[] = [
     isDefined: true,
   },
   {
+    id: "world-map",
+    title: "World Map",
+    type: "world-map",
+    isMinimized: false,
+    orderIndex: 4,
+    isDefined: true,
+  },
+  {
     id: "version",
     title: "App Versions",
     type: "app-versions",
     isMinimized: false,
-    orderIndex: 4,
+    orderIndex: 5,
     isDefined: true,
   },
   {
@@ -69,7 +78,7 @@ export const DEFAULT_WIDGETS_CONFIG: SingleWidgetConfig[] = [
     title: "Operating Systems",
     type: "operating-systems",
     isMinimized: false,
-    orderIndex: 5,
+    orderIndex: 6,
     isDefined: true,
   },
   {
@@ -77,7 +86,7 @@ export const DEFAULT_WIDGETS_CONFIG: SingleWidgetConfig[] = [
     title: "Device Models",
     type: "device-models",
     isMinimized: false,
-    orderIndex: 6,
+    orderIndex: 7,
     isDefined: true,
   },
   {

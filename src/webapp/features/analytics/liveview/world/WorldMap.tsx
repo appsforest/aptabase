@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { MapDataPoint } from "./MapDataPoint";
 import { WorldMapParts } from "./WorldMapParts";
 
@@ -26,6 +26,16 @@ export function WorldMap(props: Props) {
   const [activeCountry, setActiveCountry] = useState<string | undefined>(undefined);
   const maxUsers = props.points.reduce((max, point) => Math.max(max, point.users), 0);
 
+  const activeCountries = useMemo(() => {
+    return props.points.reduce<string[]>((acc, point) => {
+      if (!acc.includes(point.countryCode)) {
+        acc.push(point.countryCode);
+      }
+
+      return acc;
+    }, []);
+  }, [props.points])
+
   return (
     <>
       <svg
@@ -46,7 +56,7 @@ export function WorldMap(props: Props) {
           }}
         />
 
-        <WorldMapParts activeCountry={activeCountry} />
+        <WorldMapParts activeCountries={activeCountries} />
 
         {props.points.map((point) => (
           <MapDataPoint
