@@ -68,6 +68,13 @@ export function KeyMetrics(props: Props) {
             format="number"
           />
           <Metric
+            label="New Users"
+            current={metrics?.current.newUsers ?? 0}
+            previous={metrics?.previous?.newUsers}
+            activeClassName="bg-primary"
+            format="number"
+          />
+          <Metric
             label="Sessions"
             current={metrics?.current.sessions ?? 0}
             previous={metrics?.previous?.sessions}

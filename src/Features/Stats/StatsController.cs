@@ -40,6 +40,7 @@ public record KeyMetricsRow
     public int Sessions { get; set; } = 0;
     public int Events { get; set; } = 0;
     public double DurationSeconds { get; set; } = 0;
+    public double NewUsers { get; set; } = 0;
 }
 
 public record TopNItem
