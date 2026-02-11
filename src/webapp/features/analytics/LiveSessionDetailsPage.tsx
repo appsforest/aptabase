@@ -4,16 +4,16 @@ import { Page, PageHeading } from "@components/Page";
 import { liveSessionDetails } from "@features/analytics/query";
 import { useApps, useCurrentApp } from "@features/apps";
 import { CountryFlag, CountryName } from "@features/geo";
-import { formatDate, formatTime } from "@fns/format-date";
 import { formatNumber } from "@fns/format-number";
-import { IconArrowLeft, IconClick, IconClock, IconDevices, IconUser } from "@tabler/icons-react";
+import { IconArrowLeft, IconCircleCheck, IconClick, IconClock, IconDevices, IconUser } from "@tabler/icons-react";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { Navigate, useLocation, useNavigate, useParams } from "react-router-dom";
 import { OSIcon } from "./dashboard/icons/os";
-import { SessionTimeline } from "./liveview/timeline";
+import { Metric, SessionTimeline } from "./liveview/timeline";
 
 Component.displayName = "LiveSessionDetailsPage";
+
 export function Component() {
   const { buildMode } = useApps();
   const app = useCurrentApp();
@@ -28,6 +28,8 @@ export function Component() {
     queryFn: () => liveSessionDetails({ appId: app.id, buildMode, sessionId }),
     refetchInterval: 10000,
   });
+
+  const firstEvent = JSON.parse(data?.eventsStringProps[0] ?? '{}') as { locale?: string; userId?: string; proActive?: string }
 
   useEffect(() => {
     trackEvent("liveview_session_viewed");
@@ -53,48 +55,26 @@ export function Component() {
         </Button>
       </div>
 
+
       {data && (
         <div className="mt-10 flex flex-col">
-          <div className="flex gap-2 items-center mb-1">
-            <IconDevices className="text-muted-foreground h-5 w-5" />
-            <span className="tabular-nums">App Version {data.appVersion}</span>
-          </div>
-          <div className="flex gap-2 items-center mb-1">
-            <IconUser className="text-muted-foreground h-5 w-5" />
-            <span className="tabular-nums">{`${formatDate(data.startedAt)} ${formatTime(data.startedAt)}`}</span>
-          </div>
+          <div className="flex items-center gap-4">
+            {firstEvent.userId && <Metric name="User ID" value={firstEvent.userId} icon={<IconUser className="text-muted-foreground h-4 w-4" />} />}
+            {firstEvent.proActive && <Metric name="Pro" value={firstEvent.proActive} icon={<IconCircleCheck className="text-muted-foreground h-4 w-4" />} />}
+            {firstEvent.locale && <Metric name="Locale" value={firstEvent.locale} />}
 
-          <div className="flex flex-col space-y-1 md:flex-row md:space-y-0">
-            <div className="w-40 space-y-1">
-              <div className="flex gap-2 items-center">
-                <IconClock className="text-muted-foreground h-5 w-5" />
-                <span className="tabular-nums">{formatNumber(data.duration, "duration")}</span>
-              </div>
+            <Metric name="Events" value={data.eventsCount} icon={<IconClick className="text-muted-foreground h-4 w-4" />} />
+            <Metric name="Duration" value={formatNumber(data.duration, "duration")} icon={<IconClock className="text-muted-foreground h-4 w-4" />} />
 
-              <div className="flex gap-2 items-center">
-                <IconClick className="text-muted-foreground h-5 w-5" />
-                <span>{data.eventsCount} events</span>
-              </div>
-            </div>
+            {data.regionName && data.countryCode && (
+              <Metric name="Country" value={<>{data.regionName ? <span>{data.regionName} · </span> : null}<CountryName countryCode={data.countryCode} /></>} icon={<CountryFlag countryCode={data.countryCode} />} />
+            )}
 
-            <div className="space-y-1">
-              <div className="flex gap-2 items-center">
-                <CountryFlag countryCode={data.countryCode} />
-                <div>
-                  {data.regionName && <span>{data.regionName} · </span>} <CountryName countryCode={data.countryCode} />
-                </div>
-              </div>
-
-              <div className="flex gap-2 items-center">
-                <OSIcon name={data.osName} className="h-5 w-5" />
-                <span>
-                  {data.osName} {data.osVersion}
-                </span>
-              </div>
-            </div>
+            <Metric name="App Version" value={data.appVersion} icon={<IconDevices className="text-muted-foreground h-4 w-4" />} />
+            <Metric name="Device" value={<>{data.osName} {data.osVersion}</>} icon={<OSIcon name={data.osName} className="text-muted-foreground h-4 w-4" />} />
           </div>
 
-          <div className="mt-8 flex flex-col gap-4">
+          <div className="mt-8 flex flex-col gap-6">
             <SessionTimeline {...data} />
           </div>
         </div>
