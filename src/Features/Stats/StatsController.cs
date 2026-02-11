@@ -227,7 +227,7 @@ public class StatsController : Controller
         return await TopN("os_version", body.Granularity ?? GranularityEnum.Hour, TopNValue.UniqueSessions, body, cancellationToken);
     }
 
-    [HttpGet("/api/_stats/top-devices")]
+    [HttpGet("/api/_stats/top-devicemodels")]
     public async Task<IActionResult> TopDevices([FromQuery] QueryParams body, CancellationToken cancellationToken)
     {
         return await TopN("device_model", body.Granularity ?? GranularityEnum.Hour, TopNValue.UniqueSessions, body, cancellationToken);
@@ -272,7 +272,7 @@ public class StatsController : Controller
         if (!currentQuery.DateFrom.HasValue || !currentQuery.DateTo.HasValue) {
             return Ok(new KeyMetrics(await current));
         }
-        
+
         var previousQuery = currentQuery.CloneToPreviousInterval();
         var previous = await GetKeyMetrics(previousQuery, cancellationToken);
         return Ok(new KeyMetrics(await current, previous));

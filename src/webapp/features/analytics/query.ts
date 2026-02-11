@@ -54,6 +54,10 @@ export function topAppBuildNumbers(params: QueryParams): Promise<TopNItem[]> {
   return api.get<TopNItem[]>(`/_stats/top-appbuildnumbers`, params);
 }
 
+export function topDeviceModels(params: QueryParams): Promise<TopNItem[]> {
+  return api.get<TopNItem[]>(`/_stats/top-devicemodels`, params);
+}
+
 export type KeyMetrics = {
   current: {
     dailyUsers: number;

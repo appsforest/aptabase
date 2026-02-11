@@ -11,7 +11,9 @@ type WidgetType =
   | "countries"
   | "operating-systems"
   | "events"
-  | "app-versions";
+  | "app-versions"
+  | "device-models";
+
 const userDefinedWidgetTypes: WidgetType[] = ["custom-events-chart"];
 
 export type SingleWidgetConfig<T = any> = {
@@ -28,41 +30,14 @@ export type SingleWidgetConfig<T = any> = {
 export type WidgetsConfig = {
   [key: string]: SingleWidgetConfig[];
 };
+
 export const DEFAULT_WIDGETS_CONFIG: SingleWidgetConfig[] = [
-  {
-    id: "events-chart",
-    title: "Custom Chart",
-    type: "custom-events-chart",
-    isMinimized: false,
-    orderIndex: 10,
-    isDefined: false,
-    properties: {
-      selectedEventNames: [],
-    },
-    supportsRemove: true,
-  },
   {
     id: "main-chart",
     title: "Events Chart",
     type: "events-chart",
     isMinimized: false,
     orderIndex: 1,
-    isDefined: true,
-  },
-  {
-    id: "country",
-    title: "Countries",
-    type: "countries",
-    isMinimized: false,
-    orderIndex: 3,
-    isDefined: true,
-  },
-  {
-    id: "os",
-    title: "Operating Systems",
-    type: "operating-systems",
-    isMinimized: false,
-    orderIndex: 4,
     isDefined: true,
   },
   {
@@ -74,12 +49,48 @@ export const DEFAULT_WIDGETS_CONFIG: SingleWidgetConfig[] = [
     isDefined: true,
   },
   {
+    id: "country",
+    title: "Countries",
+    type: "countries",
+    isMinimized: false,
+    orderIndex: 3,
+    isDefined: true,
+  },
+  {
     id: "version",
     title: "App Versions",
     type: "app-versions",
     isMinimized: false,
+    orderIndex: 4,
+    isDefined: true,
+  },
+  {
+    id: "os",
+    title: "Operating Systems",
+    type: "operating-systems",
+    isMinimized: false,
     orderIndex: 5,
     isDefined: true,
+  },
+  {
+    id: "device-models",
+    title: "Device Models",
+    type: "device-models",
+    isMinimized: false,
+    orderIndex: 6,
+    isDefined: true,
+  },
+  {
+    id: "events-chart",
+    title: "Custom Chart",
+    type: "custom-events-chart",
+    isMinimized: false,
+    orderIndex: 999,
+    isDefined: false,
+    properties: {
+      selectedEventNames: [],
+    },
+    supportsRemove: true,
   },
 ];
 

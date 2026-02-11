@@ -1,5 +1,4 @@
 import { MutableRefObject, useEffect, useRef, useState } from "react";
-import { twMerge } from "tailwind-merge";
 
 function useLazyLoad<T extends Element>(ref: MutableRefObject<T>, rootMargin: string = "0px"): boolean {
   const [isIntersecting, setIntersecting] = useState<boolean>(false);
@@ -37,11 +36,12 @@ type Props = {
 };
 
 export function LazyLoad(props: Props) {
+  const className = props.className ?? 'flex flex-col'
   const ref: any = useRef<HTMLDivElement>();
   const show: boolean = useLazyLoad<HTMLDivElement>(ref);
 
   return (
-    <div ref={ref} className={twMerge("flex flex-col", props.className)}>
+    <div ref={ref} className={className}>
       {show && props.children}
     </div>
   );

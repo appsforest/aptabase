@@ -20,6 +20,7 @@ import { dashboardWidgetsAtom, getDashboardWidgetsForAppAtom, SingleWidgetConfig
 import { CurrentFilters } from "./CurrentFilters";
 import { AppShareInfo } from "./dashboard/AppShareInfo";
 import { CountryWidget } from "./dashboard/CountryWidget";
+import { DeviceModelsWidget } from "./dashboard/DevicesWidget";
 import { EventWidget } from "./dashboard/EventWidget";
 import { OSWidget } from "./dashboard/OSWidget";
 import { OnboardingDashboard } from "./dashboard/OnboardingDashboard";
@@ -113,15 +114,16 @@ export function Component() {
       //   );
       case "events-chart":
         return (
-          <WidgetContainer
-            key={widgetId}
-            widgetConfig={widget}
-            widgetName={widget?.title ?? "Events Chart"}
-            className="col-span-2"
-            onToggleMinimize={() => toggleMinimize(widgetId)}
-          >
-            <MainChartWidget {...props} />
-          </WidgetContainer>
+          <LazyLoad key={widgetId} className="col-span-2">
+            <WidgetContainer
+              key={widgetId}
+              widgetConfig={widget}
+              widgetName={widget?.title ?? "Events Chart"}
+              onToggleMinimize={() => toggleMinimize(widgetId)}
+            >
+              <MainChartWidget {...props} />
+            </WidgetContainer>
+          </LazyLoad>
         );
       case "countries":
         return (
@@ -151,14 +153,15 @@ export function Component() {
         );
       case "events":
         return (
-          <WidgetContainer
-            widgetConfig={widget}
-            widgetName={widget?.title ?? "Events"}
-            onToggleMinimize={() => toggleMinimize(widgetId)}
-            className="col-span-2"
-          >
-            <EventWidget {...props} />
-          </WidgetContainer>
+          <LazyLoad key={widgetId} className="col-span-2">
+            <WidgetContainer
+              widgetConfig={widget}
+              widgetName={widget?.title ?? "Events"}
+              onToggleMinimize={() => toggleMinimize(widgetId)}
+            >
+              <EventWidget {...props} />
+            </WidgetContainer>
+          </LazyLoad>
         );
       case "app-versions":
         return (
@@ -170,6 +173,19 @@ export function Component() {
               className="h-full"
             >
               <VersionWidget {...props} />
+            </WidgetContainer>
+          </LazyLoad>
+        );
+      case "device-models":
+        return (
+          <LazyLoad key={widgetId}>
+            <WidgetContainer
+              widgetConfig={widget}
+              widgetName={widget?.title ?? "Device Models"}
+              onToggleMinimize={() => toggleMinimize(widgetId)}
+              className="h-full"
+            >
+              <DeviceModelsWidget {...props} />
             </WidgetContainer>
           </LazyLoad>
         );
