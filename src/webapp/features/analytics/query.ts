@@ -61,14 +61,14 @@ export function topDeviceModels(params: QueryParams): Promise<TopNItem[]> {
 export type KeyMetrics = {
   current: {
     dailyUsers: number;
-    newUsers: number;
+    totalUsers: number;
     sessions: number;
     events: number;
     durationSeconds: number;
   };
   previous?: {
     dailyUsers: number;
-    newUsers: number;
+    totalUsers: number;
     sessions: number;
     events: number;
     durationSeconds: number;
