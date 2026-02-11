@@ -106,11 +106,11 @@ export function Component() {
             </div>
             <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
               {ownedApps.map((app) => (
-                <LazyLoad className="h-36" key={app.id}>
+                <LazyLoad className="h-36 flex flex-col" key={app.id}>
                   <AppSummaryWidget app={app} buildMode={buildMode} />
                 </LazyLoad>
               ))}
-              <LazyLoad className="h-36">
+              <LazyLoad className="h-36 flex flex-col">
                 <NewAppWidget />
               </LazyLoad>
             </div>
@@ -122,7 +122,7 @@ export function Component() {
               <h2 className="text-lg font-semibold mb-4">Shared with me</h2>
               <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
                 {sharedApps.map((app) => (
-                  <LazyLoad className="h-36" key={app.id}>
+                  <LazyLoad className="h-36 flex flex-col" key={app.id}>
                     <AppSummaryWidget app={app} buildMode={buildMode} />
                   </LazyLoad>
                 ))}
@@ -133,11 +133,11 @@ export function Component() {
       ) : (
         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mt-8">
           {apps.map((app) => (
-            <LazyLoad className="h-36" key={app.id}>
+            <LazyLoad className="h-36 flex flex-col" key={app.id}>
               <AppSummaryWidget app={app} buildMode={buildMode} />
             </LazyLoad>
           ))}
-          <LazyLoad className="h-36">
+          <LazyLoad className="h-36 flex flex-col">
             <NewAppWidget />
           </LazyLoad>
         </div>
