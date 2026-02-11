@@ -100,7 +100,7 @@ export function SessionsGridDisplay(props: Props) {
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-600 min-h-screen">
+            <tbody className="divide-y divide-dark-900 min-h-screen">
               {sessions.map((session) => (
                 <tr key={session.id} onClick={handleClick(session)} className="hover:bg-accent cursor-pointer">
                   <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6 lg:pl-8">
