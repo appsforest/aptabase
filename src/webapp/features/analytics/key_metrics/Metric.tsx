@@ -28,7 +28,7 @@ export function Metric(props: Props) {
   return (
     <Container
       className={twJoin(
-        "inline-flex flex-col text-center rounded p-2 min-w-[7rem]",
+        "inline-flex flex-col text-center rounded-sm p-2 min-w-[7rem]",
         props.onClick && "hover:bg-accent"
       )}
       onClick={props.onClick}

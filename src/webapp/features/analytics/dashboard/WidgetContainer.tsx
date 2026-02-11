@@ -1,7 +1,7 @@
 import { Button } from "@components/Button";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { IconGripVertical, IconX } from "@tabler/icons-react";
+import { IconX } from "@tabler/icons-react";
 import { ReactNode } from "react";
 import { SingleWidgetConfig } from "../../../atoms/widgets-atoms";
 
@@ -43,7 +43,7 @@ export const WidgetContainer = ({
       )}
 
       <div className="absolute -top-2 right-3 px-1 flex gap-1">
-        <Button
+        {/* <Button
           variant="ghost"
           size="xs"
           className="h-6 w-6 rounded-full bg-background border hover:bg-accent cursor-grab"
@@ -51,7 +51,7 @@ export const WidgetContainer = ({
           {...listeners}
         >
           <IconGripVertical className="w-4 h-4" />
-        </Button>
+        </Button> */}
 
         {/* widgetConfig.isDefined && (
           <Button variant="ghost" size="xs" className="h-6 w-6 rounded-full bg-background border hover:bg-accent" onClick={onToggleMinimize}>
@@ -65,7 +65,8 @@ export const WidgetContainer = ({
           </Button>
         )}
       </div>
-      <div className={`pt-8 pb-6 px-6 ${widgetConfig.isMinimized && widgetConfig.isDefined ? "hidden" : ""}`}>{children}</div>
+
+      <div className={`p-6 ${widgetConfig.isMinimized && widgetConfig.isDefined ? "hidden" : ""}`}>{children}</div>
     </div>
   );
 };
