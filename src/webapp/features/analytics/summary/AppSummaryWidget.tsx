@@ -39,7 +39,7 @@ export function AppSummaryWidget(props: Props) {
   return (
     <Link
       to={`/${props.app.id}${params}`}
-      className="border dark:border-none cursor-pointer rounded-t-lg shadow-md bg-card hover:bg-muted h-full flex flex-col"
+      className="border dark:border-none cursor-pointer rounded-sm shadow-md bg-card hover:bg-muted h-full flex flex-col overflow-hidden"
     >
       <SummaryDataContainer
         appId={props.app.id}

@@ -10,7 +10,7 @@ export function EmptyStateWidget(props: Props) {
   return (
     <Link
       to={`${props.app.id}/`}
-      className="border dark:border-none cursor-pointer rounded shadow-md bg-card hover:bg-muted h-full"
+      className="border dark:border-none cursor-pointer rounded-sm shadow-md bg-card hover:bg-muted h-full"
     >
       <div className="flex flex-col">
         <div className="p-2 h-12">
