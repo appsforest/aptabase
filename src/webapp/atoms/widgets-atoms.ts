@@ -10,6 +10,7 @@ type WidgetType =
   | "events-chart"
   | "countries"
   | "operating-systems"
+  | "screen-viewed"
   | "events"
   | "app-versions"
   | "device-models"
@@ -42,11 +43,19 @@ export const DEFAULT_WIDGETS_CONFIG: SingleWidgetConfig[] = [
     isDefined: true,
   },
   {
+    id: "screen-viewed",
+    title: "Screen Viewed",
+    type: "screen-viewed",
+    isMinimized: false,
+    orderIndex: 2,
+    isDefined: true,
+  },
+  {
     id: "event",
     title: "Events",
     type: "events",
     isMinimized: false,
-    orderIndex: 2,
+    orderIndex: 3,
     isDefined: true,
   },
   {
@@ -54,7 +63,7 @@ export const DEFAULT_WIDGETS_CONFIG: SingleWidgetConfig[] = [
     title: "Countries",
     type: "countries",
     isMinimized: false,
-    orderIndex: 3,
+    orderIndex: 4,
     isDefined: true,
   },
   {
@@ -62,7 +71,7 @@ export const DEFAULT_WIDGETS_CONFIG: SingleWidgetConfig[] = [
     title: "World Map",
     type: "world-map",
     isMinimized: false,
-    orderIndex: 4,
+    orderIndex: 5,
     isDefined: true,
   },
   {
@@ -70,7 +79,7 @@ export const DEFAULT_WIDGETS_CONFIG: SingleWidgetConfig[] = [
     title: "App Versions",
     type: "app-versions",
     isMinimized: false,
-    orderIndex: 5,
+    orderIndex: 6,
     isDefined: true,
   },
   {
@@ -78,7 +87,7 @@ export const DEFAULT_WIDGETS_CONFIG: SingleWidgetConfig[] = [
     title: "Operating Systems",
     type: "operating-systems",
     isMinimized: false,
-    orderIndex: 6,
+    orderIndex: 7,
     isDefined: true,
   },
   {
@@ -86,7 +95,7 @@ export const DEFAULT_WIDGETS_CONFIG: SingleWidgetConfig[] = [
     title: "Device Models",
     type: "device-models",
     isMinimized: false,
-    orderIndex: 7,
+    orderIndex: 8,
     isDefined: true,
   },
   {

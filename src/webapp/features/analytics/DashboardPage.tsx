@@ -24,6 +24,7 @@ import { DeviceModelsWidget } from "./dashboard/DevicesWidget";
 import { EventWidget } from "./dashboard/EventWidget";
 import { OSWidget } from "./dashboard/OSWidget";
 import { OnboardingDashboard } from "./dashboard/OnboardingDashboard";
+import { ScreenViewedWidget } from "./dashboard/ScreenViewedWidget";
 import { TeaserDashboardContainer } from "./dashboard/TeaserDashboardContainer";
 import { VersionWidget } from "./dashboard/VersionWidget";
 import { WidgetContainer } from "./dashboard/WidgetContainer";
@@ -165,12 +166,26 @@ export function Component() {
             </WidgetContainer>
           </LazyLoad>
         );
+      case "screen-viewed":
+        return (
+          <LazyLoad key={widgetId} className="col-span-2">
+            <WidgetContainer
+              widgetConfig={widget}
+              widgetName={widget?.title ?? "Screen Viewed"}
+              className="h-full"
+              onToggleMinimize={() => toggleMinimize(widgetId)}
+            >
+              <ScreenViewedWidget {...props} />
+            </WidgetContainer>
+          </LazyLoad>
+        );
       case "events":
         return (
-          <LazyLoad key={widgetId} className="col-span-3">
+          <LazyLoad key={widgetId} className="col-span-1">
             <WidgetContainer
               widgetConfig={widget}
               widgetName={widget?.title ?? "Events"}
+              className="h-full"
               onToggleMinimize={() => toggleMinimize(widgetId)}
             >
               <EventWidget {...props} />

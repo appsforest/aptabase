@@ -103,6 +103,13 @@ type EventPropsItem = {
   sum: number;
 };
 
+export function topScreenViewedProps(params: QueryParams): Promise<EventPropsItem[]> {
+  return api.get<EventPropsItem[]>(`/_stats/top-props`, {
+    ...params,
+    eventName: 'screen_viewed'
+  });
+}
+
 export function topEventProps(params: QueryParams): Promise<EventPropsItem[]> {
   return api.get<EventPropsItem[]>(`/_stats/top-props`, params);
 }

@@ -18,17 +18,23 @@ export function EventWidget(props: Props) {
 
   return (
     <TopNDataContainer appId={props.appId} queryName="top-events" query={topEvents}>
-      {(data) => (
-        <TopNChart
-          {...data}
-          id="events"
-          key="events"
-          title="Events"
-          searchParamKey="eventName"
-          defaultFormat="absolute"
-          valueLabel="Count"
-        />
-      )}
+      {(data) => {
+        const omitScreenViewed = data.items.filter(item => item.name !== 'screen_viewed')
+
+        data.items = omitScreenViewed
+
+        return (
+          <TopNChart
+            {...data}
+            id="events"
+            key="events"
+            title="Events"
+            searchParamKey="eventName"
+            defaultFormat="absolute"
+            valueLabel="Count"
+          />
+        )
+      }}
     </TopNDataContainer>
   );
 }
