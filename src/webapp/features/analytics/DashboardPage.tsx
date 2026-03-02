@@ -129,7 +129,7 @@ export function Component() {
         );
       case "countries":
         return (
-          <LazyLoad key={widgetId}>
+          <LazyLoad key={widgetId} className="col-span-3 md:col-span-1">
             <WidgetContainer
               widgetConfig={widget}
               widgetName={widget?.title ?? "Countries"}
@@ -142,7 +142,7 @@ export function Component() {
         );
       case "world-map":
         return (
-          <LazyLoad key={widgetId} className="col-span-2">
+          <LazyLoad key={widgetId} className="col-span-3 md:col-span-2">
             <WidgetContainer
               widgetConfig={widget}
               widgetName={widget?.title ?? "World Map"}
@@ -155,7 +155,7 @@ export function Component() {
         );
       case "operating-systems":
         return (
-          <LazyLoad key={widgetId}>
+          <LazyLoad key={widgetId} className="col-span-3 md:col-span-1">
             <WidgetContainer
               widgetConfig={widget}
               widgetName={widget?.title ?? "Operating Systems"}
@@ -168,7 +168,7 @@ export function Component() {
         );
       case "screen-viewed":
         return (
-          <LazyLoad key={widgetId} className="col-span-2">
+          <LazyLoad key={widgetId} className="col-span-3 md:col-span-2">
             <WidgetContainer
               widgetConfig={widget}
               widgetName={widget?.title ?? "Screen Viewed"}
@@ -181,7 +181,7 @@ export function Component() {
         );
       case "events":
         return (
-          <LazyLoad key={widgetId} className="col-span-1">
+          <LazyLoad key={widgetId} className="col-span-3 md:col-span-1">
             <WidgetContainer
               widgetConfig={widget}
               widgetName={widget?.title ?? "Events"}
@@ -194,7 +194,7 @@ export function Component() {
         );
       case "app-versions":
         return (
-          <LazyLoad key={widgetId}>
+          <LazyLoad key={widgetId} className="col-span-3 md:col-span-1">
             <WidgetContainer
               widgetConfig={widget}
               widgetName={widget?.title ?? "App Versions"}
@@ -207,7 +207,7 @@ export function Component() {
         );
       case "device-models":
         return (
-          <LazyLoad key={widgetId}>
+          <LazyLoad key={widgetId} className="col-span-3 md:col-span-1">
             <WidgetContainer
               widgetConfig={widget}
               widgetName={widget?.title ?? "Device Models"}
@@ -257,7 +257,7 @@ export function Component() {
         </div>
         <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
           <SortableContext items={widgetsOrder} strategy={rectSortingStrategy}>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-3 md:grid-cols-3 gap-4">
               {widgetsOrder.map((widgetId: string) => renderWidget(widgetId))}
             </div>
           </SortableContext>
