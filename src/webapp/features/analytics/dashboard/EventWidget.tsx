@@ -1,8 +1,8 @@
 import { useSearchParams } from "react-router-dom";
-import { TopNDataContainer } from "./TopNDataContainer";
 import { topEvents } from "../query";
 import { TopEventProps } from "./TopEventProps";
 import { TopNChart } from "./TopNChart";
+import { TopNDataContainer } from "./TopNDataContainer";
 
 type Props = {
   appId: string;
@@ -19,9 +19,10 @@ export function EventWidget(props: Props) {
   return (
     <TopNDataContainer appId={props.appId} queryName="top-events" query={topEvents}>
       {(data) => {
-        const omitScreenViewed = data.items.filter(item => item.name !== 'screen_viewed')
+        const omittedItems = data.items
+          .filter(item => item.name !== 'screen_viewed' && item.name !== '~session_start' && item.name !== '~dau')
 
-        data.items = omitScreenViewed
+        data.items = omittedItems
 
         return (
           <TopNChart
